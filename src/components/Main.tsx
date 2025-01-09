@@ -1,28 +1,23 @@
-import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import React from 'react';
 import imageList from '../../assets/imagePack.js';
 
-const Main = ({navigation}: any) => {
+const Main = ({ navigation }: any) => {
   return (
     <SafeAreaView style={styles.container}>
-          <View>
-            {/* <MobileNumberStorage /> */}
-            <Image style={styles.rdimage} source={imageList.rdimage} />
-            <Text className="text-2xl font-light text-black-500 text-center">
-              Create Account
-            </Text>
-            <TouchableOpacity 
-            onPress={() => { navigation.navigate('Home')}}
-            className="bg-teal-600 w-60 mx-auto m-8 p-3 rounded-lg"
-            >
-              <Text className="text-2xl font-normal text-white text-center">
-                Get Started
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </SafeAreaView>
-  )
-}
+      <View style={styles.content}>
+        <Image style={styles.rdimage} source={imageList.rdimage} />
+        <Text style={styles.title}>Create Account</Text>
+        <TouchableOpacity 
+          onPress={() => { navigation.navigate('Home') }}
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>Get Started</Text>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -31,14 +26,37 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#ffffff',
   },
+  content: {
+    alignItems: 'center', // Center horizontally
+    justifyContent: 'center', // Center vertically
+  },
   rdimage: {
-    justifyContent: 'center',
-    alignItems: 'center',
     width: 300,
     height: 150,
     resizeMode: 'contain',
-    marginBottom: 10,
-  }
+    marginBottom: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: '300', // Light font weight
+    color: '#333', // Text color
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  button: {
+    backgroundColor: '#00695c', // Teal color
+    width: 240,
+    padding: 15,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {
+    fontSize: 20,
+    color: 'white',
+    fontWeight: 'normal',
+    textAlign: 'center',
+  },
 });
 
-export default Main
+export default Main;
