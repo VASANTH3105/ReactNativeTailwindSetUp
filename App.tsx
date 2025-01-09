@@ -1,82 +1,36 @@
-import {View, Text, Alert, TextInput, Pressable, StyleSheet} from 'react-native';
-import React, {useState} from 'react';
-import {MMKV} from 'react-native-mmkv';
-import "./global.css"
-
-
-const storage = new MMKV(); // Create a new instance of MMKV
-
+import { View, Text, Image, TouchableOpacity, SafeAreaView, StyleSheet } from 'react-native'
+import React from 'react'
+import "./global.css";
+import MobileNumberStorage from './src/components/MobileNumberStorage';
+import imageList from './assets/imagePack.js';
 const App = () => {
-  const [userName, setUserName] = useState('');
-  const [mobileNumber, setMobileNumber] = useState('');
-  const [retrieveUserName, setRetrieveUserName] = useState('');
-  const [retrieveMobileNumber, setRetrieveMobileNumber] = useState('');
-
-  const saveToStorage = () => {
-    storage.set('userName', userName);
-    storage.set('mobileNumber', mobileNumber);
-    console.log('Data saved to storage');
-    setUserName('');
-    setMobileNumber('');
-    Alert.alert(
-      `Hi ${userName} Your mobile number is ${mobileNumber} has been saved successfully`,
-    );
-  };
-
-  const retrieveFromStorage = () => {
-    const storedUserName = storage.getString("userName") || "No data found";
-    const storedMobileNumber = storage.getString("mobileNumber") || "No mobile number found";
-    
-    if(storedUserName == userName) {
-      setRetrieveUserName(storedUserName);
-      setRetrieveMobileNumber(storedMobileNumber);
-      Alert.alert("Data retrieved from storage");
-      return;
-    } else {
-      Alert.alert("No data found in storage");
-      setUserName('');
-      setMobileNumber('');
-    }
-  }
-
   return (
-    <View>
-      <Text className='font-bold '>App</Text>
-      <TextInput
-      className="w-80 p-4 border border-gray-300 rounded-lg bg-white text-black mb-4"
-      placeholder='UserName'
-      value={userName}
-      onChangeText={(name) => setUserName(name)}
+    <SafeAreaView style={styles.container}>
+      <View>
+      {/* <MobileNumberStorage /> */}
+      <Image 
+      
+      className='w-80 h-80 mx-auto mt-8'
+      source={imageList.loginPic}
       />
-
-      <TextInput 
-      placeholder='Mobile Number'
-      value={mobileNumber}
-      // secureTextEntry for passwords
-      onChangeText={(number) => setMobileNumber(number)}
-      />
-
-      <Pressable onPress={saveToStorage}>
-        <Text>Save Number</Text>
-      </Pressable>
-
-      <Pressable onPress={retrieveFromStorage}>
-        <Text>Get Mobile number</Text>
-      </Pressable>
-
-      {(retrieveUserName && retrieveMobileNumber) && (
-        <Text>
-          {retrieveUserName}: {retrieveMobileNumber}
-        </Text>
-      )}
-
-
-
+      <Text className='text-4xl font-bold text-black-500 text-center'>Create Account</Text>
+      <TouchableOpacity className='bg-teal-600 w-60 mx-auto m-8 p-3 rounded-lg'>
+        <Text className='text-2xl font-normal text-white text-center'>
+          Sign Up
+          </Text>
+      </TouchableOpacity>
     </View>
-  );
-};
+    </SafeAreaView>
+  )
+}
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ffffff'
+  }
+})
 
-
-
-export default App;
+export default App
