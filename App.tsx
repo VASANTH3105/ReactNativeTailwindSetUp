@@ -33,9 +33,21 @@ const App = () => {
           component={Main}
           name="Main"
         />
-        <Stack.Screen component={Home} name="Home" />
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
+          component={Home}
+          name="Home"
+        />
         <Stack.Screen component={LoginScreen} name="LoginScreen" />
-        <Stack.Screen component={InAppMainScreen} name="InAppMainScreen" />
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
+          component={InAppMainScreen}
+          name="InAppMainScreen"
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
