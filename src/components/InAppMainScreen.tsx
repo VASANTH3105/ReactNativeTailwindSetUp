@@ -10,6 +10,7 @@ import Icon from 'react-native-vector-icons/Ionicons'; // Import the Ionicons ic
 import ProfileImage from './ProfileImage';
 
 
+
 const Tab = createBottomTabNavigator();
 
 const InAppMainScreen = () => {
@@ -31,7 +32,7 @@ const InAppMainScreen = () => {
           color: '#000',
           marginLeft: 10,
         },
-        headerTitle: 'RapidATS',
+        headerTitle: 'RapidData',
         headerTitleAlign: 'left',
         headerRight: () => (
           <ProfileImage /> 
