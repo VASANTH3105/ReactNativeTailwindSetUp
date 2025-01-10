@@ -6,21 +6,56 @@ import InAppCategories from '../screens/InAppCategories';
 import InAppHome from '../screens/InAppHome';
 import UserProfile from '../screens/UserProfile';
 import {StyleSheet} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons'; // Import the Ionicons icon set
+import ProfileImage from './ProfileImage';
+
 
 const Tab = createBottomTabNavigator();
 
 const InAppMainScreen = () => {
   return (
     <Tab.Navigator
-      screenOptions={{
+      screenOptions= {({route}) => ({
         tabBarStyle: styles.bottomNav,
         tabBarActiveTintColor: '#007bff', // Color for the active tab
         tabBarInactiveTintColor: 'gray', // Color for the inactive tabs
         tabBarLabelStyle: styles.labelStyle, // Style for the tab labels
         tabBarIconStyle: styles.iconStyle, // Optional, to style icons if needed
         headerShown: true, // Hides the header (optional)
+        headerStyle: {
+          backgroundColor: '#fff',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'light',
+          color: '#000',
+          marginLeft: 10,
+        },
+        headerTitle: 'RapidATS',
+        headerTitleAlign: 'left',
+        headerRight: () => (
+          <ProfileImage /> 
+        ),
+        headerRightContainerStyle: {
+          marginRight: 10,
+        },
+        
+        
         tabBarPosition: 'bottom', // Ensures tabs are at the bottom (default behavior)
-      }}>
+        tabBarIcon: ({ focused, color, size}) => {
+          let iconName;
+
+          if (route.name === 'Home') {
+            iconName = focused ? 'home' : 'home-outline';
+          } else if (route.name === 'Categories') {
+            iconName = focused ? 'list' : 'list-outline';
+          } else if (route.name === 'Profile') {
+            iconName = focused ? 'person' : 'person-outline';
+          }
+
+          return <Icon name={iconName} size={size} color={color} />;
+        }
+      })}>
       <Tab.Screen name="Home" component={InAppHome} />
       <Tab.Screen name="Categories" component={InAppCategories} />
       <Tab.Screen name="Profile" component={UserProfile} />

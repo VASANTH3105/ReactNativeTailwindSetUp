@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   content: {
-    alignItems: 'center', // Center horizontally
-    justifyContent: 'center', // Center vertically
+    alignItems: 'center', 
+    justifyContent: 'center', 
   },
   rdimage: {
     width: 300,
@@ -38,13 +38,13 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: '300', // Light font weight
-    color: '#333', // Text color
+    fontWeight: '300', 
+    color: '#333', 
     textAlign: 'center',
     marginBottom: 20,
   },
   button: {
-    backgroundColor: '#00695c', // Teal color
+    backgroundColor: '#007bff', 
     width: 240,
     padding: 15,
     borderRadius: 10,

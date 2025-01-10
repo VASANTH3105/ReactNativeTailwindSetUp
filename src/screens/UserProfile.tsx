@@ -1,10 +1,13 @@
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 
-const UserProfile = () => {
+const UserProfile = ({navigation}) => {
   return (
     <View>
-      <Text>UserProfile</Text>
+      <Text>UserProfilePage</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('Main')}>
+        <Text>Logout</Text>
+      </TouchableOpacity>
     </View>
   )
 }
